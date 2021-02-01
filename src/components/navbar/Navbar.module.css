@@ -1,0 +1,31 @@
+nav {
+  margin: 0;
+  background-color: #011627;
+  height: 48px;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgba(50, 50, 50, 0.25);
+}
+
+.navbar {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  max-width: 960px;
+
+  padding-left: 32px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+img {
+  height: 20px;
+}
+
+.logo {
+  color: white;
+  padding-left: 8px;
+  font-family: "Roboto Mono";
+  font-size: 18px;
+  margin-top: 12px;
+}

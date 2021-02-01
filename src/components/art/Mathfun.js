@@ -1,8 +1,17 @@
 import * as p5 from "p5";
 import useDOMControl from "../../customHooks/useDOMControl";
 import styles from "./Art.module.css";
+import Navbar from "../navbar/Navbar";
 
 const Mathfun = () => {
+  const saveFile = () => {
+    console.log("Save");
+  };
+
+  const settingsModal = () => {
+    console.log("Settings modal");
+  };
+
   // Construct canvas node
   const p5Fn = (p5Ref) => {
     const sketch = (p) => {
@@ -40,11 +49,28 @@ const Mathfun = () => {
   };
 
   return (
-    <div>
-      <h1>Math asd</h1>
-      {/* Note: to style canvas use 'canvas' in css */}
-      <div className={styles.artboard}>{useDOMControl(p5Fn)}</div>
-    </div>
+    <>
+      <Navbar />
+      <div className={styles.wrapper}>
+        <ul className={styles.canvasMenu}>
+          <li>
+            <h1>Mathfun</h1>
+          </li>
+          <div className={styles.cvBtns}>
+            <li>
+              <button onClick={settingsModal}>Settings</button>
+            </li>
+            <li>
+              <button id="download-link" onClick={saveFile}>
+                Save
+              </button>
+            </li>
+          </div>
+        </ul>
+        {/* Note: to style canvas use 'canvas' in css */}
+        <div className={styles.artboard}>{useDOMControl(p5Fn)}</div>
+      </div>
+    </>
   ); // return
 }; // Mathfun
 
