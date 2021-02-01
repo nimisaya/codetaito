@@ -8035,6 +8035,11 @@
   "resolved" "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz"
   "version" "2.2.0"
 
+"p5@^1.2.0":
+  "integrity" "sha512-om9CSZXjw+BdC/u474nUtrVXAqeSRHNBDteDpIhQqgypziE+hh9BUc/YNl3RT5rX3kNtQlLes2S2sRqFU+S+JA=="
+  "resolved" "https://registry.npmjs.org/p5/-/p5-1.2.0.tgz"
+  "version" "1.2.0"
+
 "pako@~1.0.5":
   "integrity" "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="
   "resolved" "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz"
