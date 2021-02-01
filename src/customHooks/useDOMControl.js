@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 // Inspired by https://dev.to/christiankastner/creating-a-custom-d3-or-p5-hook-in-react-fap
+// and https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 const useDOMControl = (domFunc) => {
   // Create a DOM node reference
   const domRef = useRef();

@@ -13,7 +13,7 @@ const Mathfun = () => {
 
       p.draw = () => {
         p.fill(255);
-        p.ellipse(p.width / 2, p.height / 2, 400);
+        p.ellipse(p.width / 2, p.height / 2, 200);
       };
     };
 
