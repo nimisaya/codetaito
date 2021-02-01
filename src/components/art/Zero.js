@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 
 import styles from "./Art.module.css";
 
@@ -9,12 +9,19 @@ const Zero = () => {
   const canvasRef = useRef();
 
   const title = "zero";
+  const [width, setWidth] = useState(400);
 
   useLayoutEffect(() => {
     const canvas = canvasRef.current;
 
     // Set the context to 2D graphics
     const context = canvas.getContext("2d");
+
+    // Set canvas dimensions
+    canvas.width = width;
+
+    canvas.style.width = `${width}px`;
+    //   canvas.style.height = `${height}px`;
 
     // Set pixel density
     setPixelDensity(context, canvas);
@@ -34,7 +41,7 @@ const Zero = () => {
 
     // render graphics
     render();
-  }); // useEffect
+  }, [width]); // useEffect
 
   const saveFileBtn = () => {
     // console.log(canvasRef);
@@ -56,11 +63,20 @@ const Zero = () => {
             <h1>{title}</h1>
           </li>
           <li>
-            <button id="download-link" onClick={saveFileBtn}>
-              Save
-            </button>
+            <button onClick={saveFileBtn}>Save</button>
           </li>
         </ul>
+
+        <label htmlFor="width">
+          Width
+          <input
+            id="width"
+            value={width}
+            placeholder="Width"
+            onChange={(e) => setWidth(e.target.value)}
+          />
+        </label>
+
         <canvas ref={canvasRef} id={title} onClick={saveFile()}></canvas>
       </div>
     </div>
