@@ -1,7 +1,9 @@
 import * as p5 from "p5";
 import useDOMControl from "../../customHooks/useDOMControl";
+import styles from "./art.module.css";
 
 const Mathfun = () => {
+  // Construct canvas node
   const p5Fn = (p5Ref) => {
     const sketch = (p) => {
       p.setup = () => {
@@ -19,9 +21,9 @@ const Mathfun = () => {
   };
 
   return (
-    <div className="App">
+    <div>
       <h1>Mathfun</h1>
-      {useDOMControl(p5Fn)}
+      <div className={styles.artboard}>{useDOMControl(p5Fn)}</div>
     </div>
   ); // return
 }; // Mathfun
