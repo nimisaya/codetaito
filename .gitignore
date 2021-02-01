@@ -25,3 +25,4 @@ yarn-error.log*
 .prettierrc
 .vscode/*
 .eslintcache
+package-lock.json
