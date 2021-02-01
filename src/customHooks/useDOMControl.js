@@ -13,7 +13,18 @@ const useDOMControl = (domFunc) => {
   }); // useEffect
 
   // Return the constructed element (e.g. <canvas>) for rendering
-  return <div ref={domRef}></div>;
+  return (
+    <div
+      ref={domRef}
+      onClick={(e) => {
+        const link = document.createElement("a");
+        link.download = "filename.png";
+        link.href = e.target.toDataURL();
+        link.click();
+        console.log(link);
+      }}
+    ></div>
+  );
 }; // useDOMControl
 
 export default useDOMControl;
