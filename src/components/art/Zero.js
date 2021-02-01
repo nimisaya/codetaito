@@ -10,6 +10,7 @@ const Zero = () => {
 
   const title = "zero";
   const [width, setWidth] = useState(400);
+  const [height, setHeight] = useState(400);
 
   useLayoutEffect(() => {
     const canvas = canvasRef.current;
@@ -19,9 +20,11 @@ const Zero = () => {
 
     // Set canvas dimensions
     canvas.width = width;
+    canvas.height = height;
 
+    // Set css canvas dimensions
     canvas.style.width = `${width}px`;
-    //   canvas.style.height = `${height}px`;
+    canvas.style.height = `${height}px`;
 
     // Set pixel density
     setPixelDensity(context, canvas);
@@ -41,7 +44,7 @@ const Zero = () => {
 
     // render graphics
     render();
-  }, [width]); // useEffect
+  }, [width, height]); // useEffect
 
   const saveFileBtn = () => {
     // console.log(canvasRef);
@@ -74,6 +77,15 @@ const Zero = () => {
             value={width}
             placeholder="Width"
             onChange={(e) => setWidth(e.target.value)}
+          />
+        </label>
+        <label htmlFor="height">
+          Height
+          <input
+            id="height"
+            value={height}
+            placeholder="height"
+            onChange={(e) => setHeight(e.target.value)}
           />
         </label>
 
