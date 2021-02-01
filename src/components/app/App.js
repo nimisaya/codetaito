@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "../home/Home";
 import Mathfun from "../art/Mathfun";
+import Zero from "../art/Zero";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/art/mathfun" component={Mathfun} />
+          <Route path="/art/zero" component={Zero} />
         </Switch>
       </Router>
       <footer>
