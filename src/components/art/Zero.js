@@ -1,17 +1,22 @@
 import { useRef, useLayoutEffect, useState } from "react";
+import useDropdown from "../../customHooks/useDropdown";
 
 import styles from "./Art.module.css";
 
 import Navbar from "../navbar/Navbar";
 
 const Zero = () => {
+  // Colour options displayed in dropdown list
+  const COLORS = ["black", "blue", "hotpink", "red", "green"];
+
   // canvasRef.current holds the canvas DOM node.
   const canvasRef = useRef();
 
   const title = "zero";
   const [width, setWidth] = useState(400);
   const [height, setHeight] = useState(400);
-  const [color, setColour] = useState("black");
+  // const [color, setColour] = useState("black");
+  const [color, ColorDropdown] = useDropdown("Colour", "#000000", COLORS);
 
   useLayoutEffect(() => {
     const canvas = canvasRef.current;
@@ -96,7 +101,8 @@ const Zero = () => {
         </label>
         <br />
         <br />
-        <label htmlFor="colour">
+        <ColorDropdown />
+        {/* <label htmlFor="colour">
           Colour
           <br />
           <input
@@ -105,7 +111,7 @@ const Zero = () => {
             placeholder="colour"
             onChange={(e) => setColour(e.target.value)}
           />
-        </label>
+        </label> */}
         <br />
         <br />
 
