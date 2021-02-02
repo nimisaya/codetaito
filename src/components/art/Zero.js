@@ -3,7 +3,6 @@ import { useRef, useLayoutEffect, useState } from "react";
 import styles from "./Art.module.css";
 
 import Navbar from "../navbar/Navbar";
-import Modal from "../modal/Modal";
 
 const Zero = () => {
   // canvasRef.current holds the canvas DOM node.
