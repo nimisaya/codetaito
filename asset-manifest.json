@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/codetaito/static/css/main.76fafe0b.chunk.css",
-    "main.js": "/codetaito/static/js/main.8d34cd8d.chunk.js",
-    "main.js.map": "/codetaito/static/js/main.8d34cd8d.chunk.js.map",
+    "main.js": "/codetaito/static/js/main.43db81b8.chunk.js",
+    "main.js.map": "/codetaito/static/js/main.43db81b8.chunk.js.map",
     "runtime-main.js": "/codetaito/static/js/runtime-main.7fc9de67.js",
     "runtime-main.js.map": "/codetaito/static/js/runtime-main.7fc9de67.js.map",
-    "static/js/2.94fa8bfa.chunk.js": "/codetaito/static/js/2.94fa8bfa.chunk.js",
-    "static/js/2.94fa8bfa.chunk.js.map": "/codetaito/static/js/2.94fa8bfa.chunk.js.map",
+    "static/js/2.4954f75e.chunk.js": "/codetaito/static/js/2.4954f75e.chunk.js",
+    "static/js/2.4954f75e.chunk.js.map": "/codetaito/static/js/2.4954f75e.chunk.js.map",
     "static/js/3.92f6ee7c.chunk.js": "/codetaito/static/js/3.92f6ee7c.chunk.js",
     "static/js/3.92f6ee7c.chunk.js.map": "/codetaito/static/js/3.92f6ee7c.chunk.js.map",
     "index.html": "/codetaito/index.html",
     "static/css/main.76fafe0b.chunk.css.map": "/codetaito/static/css/main.76fafe0b.chunk.css.map",
-    "static/js/2.94fa8bfa.chunk.js.LICENSE.txt": "/codetaito/static/js/2.94fa8bfa.chunk.js.LICENSE.txt"
+    "static/js/2.4954f75e.chunk.js.LICENSE.txt": "/codetaito/static/js/2.4954f75e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7fc9de67.js",
-    "static/js/2.94fa8bfa.chunk.js",
+    "static/js/2.4954f75e.chunk.js",
     "static/css/main.76fafe0b.chunk.css",
-    "static/js/main.8d34cd8d.chunk.js"
+    "static/js/main.43db81b8.chunk.js"
   ]
 }
