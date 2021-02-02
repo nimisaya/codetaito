@@ -68,7 +68,9 @@ const Mathfun = () => {
           </div>
         </ul>
         {/* Note: to style canvas use 'canvas' in css */}
-        <div className={styles.artboard}>{useDOMControl(p5Fn)}</div>
+        <div id="artboard" className={styles.artboard}>
+          {useDOMControl(p5Fn)}
+        </div>
       </div>
     </>
   ); // return

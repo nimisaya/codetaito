@@ -1,16 +1,36 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 
 // Inspired by https://dev.to/christiankastner/creating-a-custom-d3-or-p5-hook-in-react-fap
 // and https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 const useDOMControl = (domFunc) => {
-  // Create a DOM node reference
-  const domRef = useRef();
+  const rootEl = document.getElementById("root");
+  const footEl = document.getElementById("footer");
 
-  // Call the domFunc with the DOM element as an input
-  // ref.current refers to the the element e.g. <canvas></canvas>
-  useEffect(() => {
+  const domRef = useRef(null);
+  if (!domRef.current) {
+    domRef.current = document.createElement("div");
+  }
+
+  useLayoutEffect(() => {
     domFunc(domRef.current);
-  }); // useEffect
+    rootEl.appendChild(domRef.current);
+    return () => rootEl.removeChild(domRef.current);
+  });
+
+  // // Create a DOM node reference
+  // const domRef = useRef(null);
+
+  // if (!domRef.current) {
+  //   domFunc(domRef.current);
+  // }
+
+  // // Call the domFunc with the DOM element as an input
+  // // ref.current refers to the the element e.g. <canvas></canvas>
+  // useLayoutEffect(() => {
+
+  //   // return () => docRoot.removeChild(domRef.current);
+  // }, []);
+  // }); // useEffect
 
   // Return the constructed element (e.g. <canvas>) for rendering
   return (
