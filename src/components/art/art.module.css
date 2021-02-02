@@ -1,6 +1,9 @@
 .wrapper {
-  margin-left: 10vw;
-  margin-right: 10vw;
+  margin-top: 5vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .artboard {
@@ -17,13 +20,19 @@ canvas {
 
 .canvasMenu {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: top;
+  background-color: rgba(1, 22, 39, 1);
+  color: white;
+  padding: 12px;
+  max-width: 200px;
+  border-radius: 0 4px 4px 0;
 }
 
-.canvasMenu li {
-  list-style-type: none;
+hr {
+  color: white;
+  width: 200px;
 }
 
 .cvBtns {
@@ -34,19 +43,52 @@ canvas {
 }
 
 .canvasMenu button {
-  background-color: rgba(100, 100, 100, 0.2);
-  margin-left: 8px;
+  background-color: rgba(255, 255, 255, 1);
   padding: 12px;
   border: none;
-  border-radius: 12px;
+  border-radius: 2px;
+  min-width: 200px;
+  font-weight: bold;
 }
 
 .canvasMenu button:hover {
-  background-color: rgba(100, 100, 100, 0.4);
+  font-weight: bold;
 }
 
 .canvasMenu h1 {
+  font-size: large;
+  font-weight: 700;
+}
+.canvasMenu h2 {
   font-size: medium;
   font-weight: 500;
-  color: #333333;
+}
+
+.canvasMenu p {
+  font-size: medium;
+  font-weight: 300;
+}
+
+.dimensions {
+  font-size: smaller;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+select {
+  color: rgba(1, 22, 39, 1);
+  height: 48px;
+  min-width: 200px;
+  padding-left: 4px;
+  padding-right: 0;
+  font-size: small;
+  font-weight: medium;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 2px;
+}
+
+label {
+  font-size: small;
+  font-weight: medium;
 }

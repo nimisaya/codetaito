@@ -1,19 +1,17 @@
 import { useRef, useLayoutEffect, useState } from "react";
+import styles from "../art/Art.module.css";
 import useDropdown from "../../customHooks/useDropdown";
 
-import styles from "./Art.module.css";
-
-import Navbar from "../navbar/Navbar";
-
 const DEFAULT_WIDTH = 600;
-const DEFAULT_HEIGHT = 400;
+const DEFAULT_HEIGHT = 600;
 
 const Zero = () => {
   // Colour options displayed in dropdown list
-  const COLORS = ["black", "blue", "hotpink", "red", "green"];
+  const COLORS = ["Black", "Blue", "Hotpink", "Red", "Green"];
 
   // Dimensions options displayed in dropdown list
-  const DIMENSIONS = ["Default", "Instagram", "Zoom"];
+  const DIMENSIONS = ["Default"];
+  // const DIMENSIONS = ["Default", "Instagram", "Zoom"];
 
   // canvasRef.current holds the canvas DOM node.
   const canvasRef = useRef();
@@ -46,15 +44,19 @@ const Zero = () => {
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
 
+    // If the canvas ratio changes then the context has to be scaled appropriately
+    // context is what is actually appearing on the screen
+    // context.scale(0.5, 0.5);
     // Set pixel density
     setPixelDensity(context, canvas);
 
     // Draw a circle --------------------
     const render = () => {
       context.beginPath();
+      // x (center), y (center), r, startAngle, endAngle
       context.arc(
-        canvas.width / 4,
-        canvas.height / 4,
+        canvas.width / 2,
+        canvas.height / 2,
         canvas.width / 4,
         0,
         2 * Math.PI
@@ -80,33 +82,49 @@ const Zero = () => {
 
   return (
     <div>
-      <Navbar />
       <div className={styles.wrapper}>
-        <ul className={styles.canvasMenu}>
-          <li>
-            <h1>{title}</h1>
-          </li>
-          <li>
-            <button onClick={saveFileBtn}>Save</button>
-          </li>
-        </ul>
+        {/* CANVAS ========================== */}
+        <canvas ref={canvasRef} id={title}></canvas>
 
-        <ColorDropdown />
-        <br />
-        <DimensionsDropdown />
-        <p>
-          Width: {width}, height: {height}
-        </p>
-        <br />
-        <br />
-
-        <canvas ref={canvasRef} id={title} onClick={saveFile()}></canvas>
+        {/* MENU ========================== */}
+        <div className={styles.canvasMenu}>
+          <h1>{title}</h1>
+          <button onClick={saveFileBtn}>Save</button>
+          <br />
+          <hr />
+          <h2>Settings</h2>
+          <DimensionsDropdown />
+          <br />
+          <ColorDropdown />
+          <p className={styles.dimensions}>
+            <small>
+              {width} x {height}
+            </small>
+          </p>
+        </div>
       </div>
     </div>
   ); // return
 }; // Zero
 
 export default Zero;
+
+const updateWidthHeight = (dimensions, setWidth, setHeight) => {
+  switch (dimensions) {
+    case "Instagram":
+      setWidth(1080);
+      setHeight(1080);
+      break;
+    case "Zoom":
+      setWidth(1920);
+      setHeight(1080);
+      break;
+    default:
+      setWidth(DEFAULT_WIDTH);
+      setHeight(DEFAULT_HEIGHT);
+      break;
+  }
+};
 
 // Pixel ratio of the device
 const getPixelRatio = (context) => {
@@ -137,30 +155,3 @@ const setPixelDensity = (context, canvas) => {
   canvas.style.width = `${width}px`;
   canvas.style.height = `${height}px`;
 }; // setPixelDensity
-
-const saveFile = () => {
-  return (e) => {
-    const link = document.createElement("a");
-    link.download = "filename.png";
-    link.href = e.target.toDataURL();
-    link.click();
-    console.log(link);
-  };
-}; // saveFile
-
-const updateWidthHeight = (dimensions, setWidth, setHeight) => {
-  switch (dimensions) {
-    case "Instagram":
-      setWidth(1080);
-      setHeight(1080);
-      break;
-    case "Zoom":
-      setWidth(1920);
-      setHeight(1080);
-      break;
-    default:
-      setWidth(DEFAULT_WIDTH);
-      setHeight(DEFAULT_HEIGHT);
-      break;
-  }
-};
