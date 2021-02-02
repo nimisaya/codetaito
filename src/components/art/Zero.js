@@ -3,6 +3,7 @@ import { useRef, useLayoutEffect, useState } from "react";
 import styles from "./Art.module.css";
 
 import Navbar from "../navbar/Navbar";
+import Modal from "../modal/Modal";
 
 const Zero = () => {
   // canvasRef.current holds the canvas DOM node.
@@ -11,6 +12,7 @@ const Zero = () => {
   const title = "zero";
   const [width, setWidth] = useState(400);
   const [height, setHeight] = useState(400);
+  const [color, setColour] = useState("black");
 
   useLayoutEffect(() => {
     const canvas = canvasRef.current;
@@ -39,12 +41,13 @@ const Zero = () => {
         0,
         2 * Math.PI
       );
+      context.fillStyle = color;
       context.fill();
     };
 
     // render graphics
     render();
-  }, [width, height]); // useEffect
+  }, [width, height, color]); // useEffect
 
   const saveFileBtn = () => {
     // console.log(canvasRef);
@@ -72,6 +75,7 @@ const Zero = () => {
 
         <label htmlFor="width">
           Width
+          <br />
           <input
             id="width"
             value={width}
@@ -79,8 +83,11 @@ const Zero = () => {
             onChange={(e) => setWidth(e.target.value)}
           />
         </label>
+        <br />
+        <br />
         <label htmlFor="height">
           Height
+          <br />
           <input
             id="height"
             value={height}
@@ -88,6 +95,20 @@ const Zero = () => {
             onChange={(e) => setHeight(e.target.value)}
           />
         </label>
+        <br />
+        <br />
+        <label htmlFor="colour">
+          Colour
+          <br />
+          <input
+            id="colour"
+            value={color}
+            placeholder="colour"
+            onChange={(e) => setColour(e.target.value)}
+          />
+        </label>
+        <br />
+        <br />
 
         <canvas ref={canvasRef} id={title} onClick={saveFile()}></canvas>
       </div>
