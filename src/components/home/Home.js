@@ -6,9 +6,18 @@ const Home = () => {
   return (
     <>
       <h1>Generate unique art</h1>
-      <Link to="/art/mathfun" className={styles.sketchlink}>
-        Get started
-      </Link>
+      <ul>
+        <li>
+          <Link to="/art/mathfun" className={styles.sketchlink}>
+            Mathfun
+          </Link>
+        </li>
+        <li>
+          <Link to="/art/zero" className={styles.sketchlink}>
+            Zero
+          </Link>
+        </li>
+      </ul>
     </>
   ); // return
 }; // Home
