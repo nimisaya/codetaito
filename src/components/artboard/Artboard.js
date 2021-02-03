@@ -3,7 +3,6 @@ import Zero from "../art/Zero";
 
 const Artboard = () => {
   const Canvas = Zero;
-  // const canvasTitle = "Zero";
 
   return (
     <div>

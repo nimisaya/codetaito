@@ -2,13 +2,14 @@ import { useRef, useLayoutEffect, useState } from "react";
 import styles from "../art/Art.module.css";
 import useDropdown from "../../customHooks/useDropdown";
 
+import { HexColorPicker } from "react-colorful";
+import "react-colorful/dist/index.css";
+
 const DEFAULT_WIDTH = 600;
 const DEFAULT_HEIGHT = 600;
+const DEFAULT_BKG_COLOR = "white";
 
 const Zero = () => {
-  // Colour options displayed in dropdown list
-  const COLORS = ["Black", "Blue", "Hotpink", "Red", "Green"];
-
   // Dimensions options displayed in dropdown list
   const DIMENSIONS = ["Default"];
   // const DIMENSIONS = ["Default", "Instagram", "Zoom"];
@@ -20,8 +21,7 @@ const Zero = () => {
   const [width, setWidth] = useState(DEFAULT_WIDTH);
   const [height, setHeight] = useState(DEFAULT_HEIGHT);
 
-  // const [color, setColour] = useState("black");
-  const [color, ColorDropdown] = useDropdown("Colour", COLORS[0], COLORS);
+  const [color, setColor] = useState("#000000");
   const [dimensions, DimensionsDropdown] = useDropdown(
     "Dimensions",
     DIMENSIONS[0],
@@ -32,7 +32,7 @@ const Zero = () => {
     const canvas = canvasRef.current;
 
     // Set the context to 2D graphics
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext("2d", { alpha: false }); // turn transparency off to improve performance (unless required)
 
     // Set canvas dimensions
     updateWidthHeight(dimensions, setWidth, setHeight);
@@ -50,34 +50,24 @@ const Zero = () => {
     // Set pixel density
     setPixelDensity(context, canvas);
 
+    context.fillStyle = DEFAULT_BKG_COLOR;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
     // Draw a circle --------------------
-    const render = () => {
-      context.beginPath();
-      // x (center), y (center), r, startAngle, endAngle
-      context.arc(
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.width / 4,
-        0,
-        2 * Math.PI
-      );
-      context.fillStyle = color;
-      context.fill();
-    };
+    // const render = graphics(context, canvas, color);
+    const render = graphics(context, canvas, color);
 
     // render graphics
     render();
   }, [width, height, color, dimensions]); // useEffect
 
   const saveFileBtn = () => {
-    // console.log(canvasRef);
     const canvasID = canvasRef.current.id;
     const image = document.getElementById(canvasID);
     const link = document.createElement("a");
     link.download = `${canvasID}`;
     link.href = image.toDataURL("image/png"); //  Convert canvas content to base64 string
     link.click();
-    // console.log(link);
   }; // saveFileBtn
 
   return (
@@ -95,7 +85,8 @@ const Zero = () => {
           <h2>Settings</h2>
           <DimensionsDropdown />
           <br />
-          <ColorDropdown />
+          {/* <ColorDropdown /> */}
+          <HexColorPicker color={color} onChange={setColor} />
           <p className={styles.dimensions}>
             <small>
               {width} x {height}
@@ -116,8 +107,8 @@ const updateWidthHeight = (dimensions, setWidth, setHeight) => {
       setHeight(1080);
       break;
     case "Zoom":
-      setWidth(1920);
-      setHeight(1080);
+      setWidth(1920 / 2);
+      setHeight(1080 / 2);
       break;
     default:
       setWidth(DEFAULT_WIDTH);
@@ -126,6 +117,64 @@ const updateWidthHeight = (dimensions, setWidth, setHeight) => {
   }
 };
 
+// GRAPHICS =========================================================
+
+const graphics = (context, canvas, color) => {
+  return () => {
+    // Draw circle
+    context.beginPath();
+    context.arc(
+      canvas.width / 2, // x (center)
+      canvas.height / 2, // y (center)
+      canvas.width / 4, // r
+      0, // startAngle
+      2 * Math.PI // endAngle
+    );
+    context.fillStyle = color;
+    context.fill();
+
+    // Draw Rectangles that overlap
+    context.fillStyle = "rgb(200, 0, 0)";
+    context.fillRect(10, 10, 50, 50);
+
+    context.fillStyle = "rgba(0, 0, 200, 0.5)";
+    context.fillRect(30, 30, 50, 50);
+
+    // Draw rectangle that cuts out shape
+    context.clearRect(
+      canvas.width / 2,
+      canvas.height / 2,
+      canvas.width / 4,
+      60
+    );
+
+    // Draw triangle
+    context.beginPath();
+    context.moveTo(75, 50);
+    context.lineTo(100, 75);
+    context.lineTo(100, 25);
+    context.fill();
+
+    context.beginPath();
+    context.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+    context.moveTo(110, 75); // Place the starting point somewhere else
+    context.arc(75, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
+    context.moveTo(65, 65);
+    context.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+    context.moveTo(95, 65);
+    context.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(canvas.width / 2, canvas.height / 2);
+    context.lineTo(10, 10);
+    context.lineTo(200, 200);
+    context.strokeStyle = "white";
+    context.stroke();
+  };
+};
+
+// DISPLAY =========================================================
 // Pixel ratio of the device
 const getPixelRatio = (context) => {
   const backingStore =
