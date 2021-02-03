@@ -7,6 +7,9 @@ import { HexColorPicker } from "react-colorful";
 
 // Sketches
 import circle from "../../sketches/Circle";
+import blobular from "../../sketches/Blobular";
+import dancingpoints from "../../sketches/DancingPoint";
+import wreath from "../../sketches/Wreath";
 
 const DEFAULT_WIDTH = 600;
 const DEFAULT_HEIGHT = 600;
@@ -107,13 +110,16 @@ export default Zero;
 
 const graphics = (context, canvas, color) => {
   return () => {
-    circle(
-      context,
-      color,
-      canvas.width / 2,
-      canvas.height / 2,
-      canvas.width / 4
-    );
+    // circle(
+    //   context,
+    //   color,
+    //   canvas.width / 2,
+    //   canvas.height / 2,
+    //   canvas.width / 4
+    // );
+    wreath(context, canvas, color);
+    // blobular(context, canvas, color);
+    // dancingpoints(context, canvas, color);
     // polar(context, canvas, color);
   };
 };
