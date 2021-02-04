@@ -1,7 +1,22 @@
 import circle from "./Circle";
 
+// CHANGE APPROACH
+// Add all the points to an array (linked list style?)
+// Use curve to and draw from point a to c through b
+// ensure the path is closed and fill
+
+// Relevant
+//xt, yt is the point to draw through
+// x0, y0, x2, y2 is the end points
+// x1 = xt * 2 - (x0 - x2) / 2;
+// y1 = yt * 2 - (y0 - y2) / 2;
+// moveTo(x0, y0);
+// curveTo(x1, y1, x2, y2);
+
+// =========================================
+
 const Junkblob = (context, canvas, color) => {
-  const r = canvas.width / 4; // radius will be max 1/4(canvasWidth)
+  const r = canvas.width / 8; // radius will be max 1/4(canvasWidth)
   const cx = canvas.width / 2; // c * x
   const cy = canvas.height / 2; // c * y;
   let x;
@@ -47,57 +62,6 @@ const Junkblob = (context, canvas, color) => {
       x: x,
       y: y,
     };
-
-    // cpStart = {
-    //   x: x,
-    //   y: y,
-    // };
-    // cpEnd = {
-    //   x: x + 60,
-    //   y: y - 100,
-    // };
-    // (x, -y)
-    // if (i >= 0 && i < Math.PI / 2) {
-    //   cpStart = {
-    //     x: x,
-    //     y: y,
-    //   };
-    //   cpEnd = {
-    //     x: x + 60,
-    //     y: y - 100,
-    //   };
-
-    //   //   (-x, -y)
-    // } else if (i >= Math.PI / 2 && i < Math.PI) {
-    //   cpStart = {
-    //     x: x,
-    //     y: y,
-    //   };
-    //   cpEnd = {
-    //     x: x + 400,
-    //     y: y + 300,
-    //   };
-    // }
-    // (-x, y)
-    // } else if (i >= Math.PI && i < Math.PI / 2) {
-    //   cpStart = {
-    //     x: -1,
-    //     y: 1,
-    //   };
-    //   cpEnd = {
-    //     x: -300,
-    //     y: 300,
-    //   };
-    // } else {
-    //   cpStart = {
-    //     x: 1,
-    //     y: 1,
-    //   };
-    //   cpEnd = {
-    //     x: 1,
-    //     y: 1,
-    //   };
-    // }
 
     if (i === 0) {
       // Move to the first point
