@@ -10,6 +10,7 @@ import circle from "../../sketches/Circle";
 import blobular from "../../sketches/Blobular";
 import dancingpoints from "../../sketches/DancingPoint";
 import wreath from "../../sketches/Wreath";
+import junkblob from "../../sketches/JunkBlob";
 
 const DEFAULT_WIDTH = 600;
 const DEFAULT_HEIGHT = 600;
@@ -20,17 +21,25 @@ const Zero = () => {
   const DIMENSIONS = ["Default"];
   // const DIMENSIONS = ["Default", "Instagram", "Zoom"];
 
+  // Select sketch from dropdown list
+  const SKETCHES = ["Wreath", "Blobular", "Dancing Points"];
+
   // canvasRef.current holds the canvas DOM node.
   const canvasRef = useRef();
 
-  const title = "zero";
   const [width, setWidth] = useState(DEFAULT_WIDTH);
   const [height, setHeight] = useState(DEFAULT_HEIGHT);
   const [color, setColor] = useState("#000000");
+
   const [dimensions, DimensionsDropdown] = useDropdown(
-    "Dimensions",
+    "Choose a size",
     DIMENSIONS[0],
     DIMENSIONS
+  );
+  const [sketch, SketchesDropdown] = useDropdown(
+    "Pick a sketch",
+    SKETCHES[0],
+    SKETCHES
   );
 
   useLayoutEffect(() => {
@@ -41,7 +50,6 @@ const Zero = () => {
 
     // Set canvas dimensions
     updateWidthHeight(dimensions, setWidth, setHeight);
-    // updateWidthHeight(dimensions);
     canvas.width = width;
     canvas.height = height;
 
@@ -60,11 +68,11 @@ const Zero = () => {
 
     // Draw a circle --------------------
     // const render = graphics(context, canvas, color);
-    const render = graphics(context, canvas, color);
+    const render = graphics(context, canvas, color, sketch);
 
     // render graphics
     render();
-  }, [width, height, color, dimensions]); // useEffect
+  }, [width, height, color, dimensions, sketch]); // useEffect
 
   const saveFileBtn = () => {
     const canvasID = canvasRef.current.id;
@@ -79,15 +87,16 @@ const Zero = () => {
     <div>
       <div className={styles.wrapper}>
         {/* CANVAS ========================== */}
-        <canvas ref={canvasRef} id={title}></canvas>
+        <canvas ref={canvasRef} id={sketch}></canvas>
 
         {/* MENU ========================== */}
         <div className={styles.canvasMenu}>
-          <h1>{title}</h1>
+          <h1>{sketch}</h1>
           <button onClick={saveFileBtn}>Save</button>
           <br />
           <hr />
           <h2>Settings</h2>
+          <SketchesDropdown />
           <DimensionsDropdown />
           <br />
           <HexColorPicker color={color} onChange={setColor} />
@@ -108,8 +117,22 @@ export default Zero;
 // GRAPHICS =======================================================
 ///////////////////////////////////////////////////////////////////
 
-const graphics = (context, canvas, color) => {
+const graphics = (context, canvas, color, sketch) => {
   return () => {
+    switch (sketch) {
+      case "Wreath":
+        wreath(context, canvas, color);
+        break;
+      case "Blobular":
+        blobular(context, canvas, color);
+        break;
+      case "Dancing Points":
+        dancingpoints(context, canvas, color);
+        break;
+      default:
+        wreath(context, canvas, color);
+        break;
+    }
     // circle(
     //   context,
     //   color,
@@ -117,8 +140,9 @@ const graphics = (context, canvas, color) => {
     //   canvas.height / 2,
     //   canvas.width / 4
     // );
-    wreath(context, canvas, color);
+    // wreath(context, canvas, color);
     // blobular(context, canvas, color);
+    // junkblob(context, canvas, color);
     // dancingpoints(context, canvas, color);
     // polar(context, canvas, color);
   };
