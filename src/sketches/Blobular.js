@@ -1,4 +1,4 @@
-import circle from "./Circle";
+// import circle from "./Circle";
 
 // CHANGE APPROACH
 // Add all the points to an array (linked list style?)
