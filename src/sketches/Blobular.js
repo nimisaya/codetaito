@@ -1,5 +1,20 @@
 import circle from "./Circle";
 
+// CHANGE APPROACH
+// Add all the points to an array (linked list style?)
+// Use curve to and draw from point a to c through b
+// ensure the path is closed and fill
+
+// Relevant
+//xt, yt is the point to draw through
+// x0, y0, x2, y2 is the end points
+// x1 = xt * 2 - (x0 - x2) / 2;
+// y1 = yt * 2 - (y0 - y2) / 2;
+// moveTo(x0, y0);
+// curveTo(x1, y1, x2, y2);
+
+// =========================================
+
 const Blobular = (context, canvas, color) => {
   const r = canvas.width / 5; // radius will be max 1/4(canvasWidth)
   const cx = canvas.width / 2; // c * x
