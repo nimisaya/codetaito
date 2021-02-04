@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/codetaito/static/css/main.2d376d85.chunk.css",
-    "main.js": "/codetaito/static/js/main.46d29745.chunk.js",
-    "main.js.map": "/codetaito/static/js/main.46d29745.chunk.js.map",
+    "main.js": "/codetaito/static/js/main.7e9b295b.chunk.js",
+    "main.js.map": "/codetaito/static/js/main.7e9b295b.chunk.js.map",
     "runtime-main.js": "/codetaito/static/js/runtime-main.58c82ebe.js",
     "runtime-main.js.map": "/codetaito/static/js/runtime-main.58c82ebe.js.map",
     "static/css/2.c40e3565.chunk.css": "/codetaito/static/css/2.c40e3565.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.c40e3565.chunk.css",
     "static/js/2.36f5a890.chunk.js",
     "static/css/main.2d376d85.chunk.css",
-    "static/js/main.46d29745.chunk.js"
+    "static/js/main.7e9b295b.chunk.js"
   ]
 }
