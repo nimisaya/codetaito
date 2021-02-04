@@ -7,13 +7,11 @@ import { HexColorPicker } from "react-colorful";
 import { setPixelDensity } from "./setPixelDensity";
 
 // Sketches
-import Circle from "../../sketches/Circle";
-import Blobular from "../../sketches/Blobular";
+import Ouch from "../../sketches/Ouch";
 import Dancingpoints from "../../sketches/DancingPoint";
 import Wreath from "../../sketches/Wreath";
 import Junkblob from "../../sketches/JunkBlob";
 import SoundLog from "../../sketches/SoundLog";
-import spikeAudio from "../../sketches/SpikeAudio";
 
 const DEFAULT_WIDTH = 600;
 const DEFAULT_HEIGHT = 600;
@@ -27,7 +25,7 @@ const Zero = () => {
   // const DIMENSIONS = ["Default", "Instagram", "Zoom"];
 
   // Select sketch from dropdown list
-  const SKETCHES = ["Wreath", "Blobular", "Dancing Points", "Sound Log"];
+  const SKETCHES = ["Wreath", "Ouch", "Dancing Points", "Point Blob"];
 
   const [width, setWidth] = useState(DEFAULT_WIDTH);
   const [height, setHeight] = useState(DEFAULT_HEIGHT);
@@ -128,9 +126,9 @@ const graphics = (context, canvas, color, sketch) => {
       case "Wreath":
         Wreath(context, canvas, color);
         break;
-      case "Blobular":
-        // Blobular(context, canvas, color);
-        Junkblob(context, canvas, color);
+      case "Ouch":
+        Ouch(context, canvas, color);
+        // Junkblob(context, canvas, color);
         break;
       case "Dancing Points":
         Dancingpoints(context, canvas, color);
@@ -140,7 +138,7 @@ const graphics = (context, canvas, color, sketch) => {
         break;
       default:
         // spikeAudio(context, 300, 300, 200, color);
-        Wreath(context, canvas, color);
+        Junkblob(context, canvas, color);
         break;
     }
   };

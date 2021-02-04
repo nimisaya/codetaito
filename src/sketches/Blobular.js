@@ -16,29 +16,54 @@ import circle from "./Circle";
 // =========================================
 
 const Blobular = (context, canvas, color) => {
-  const r = canvas.width / 5; // radius will be max 1/4(canvasWidth)
+  // // Convert to relative polar co-ordinates
   const cx = canvas.width / 2; // c * x
   const cy = canvas.height / 2; // c * y;
-  let x;
-  let y;
-  let size;
 
-  // Start the path
+  context.fillStyle = "black";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
   context.beginPath();
+  const points = 630; // number of points
 
-  // Draw random points
-  for (let i = 0; i <= Math.PI * 2; i += 0.01) {
-    // Randomise distance between origin and points by changing the length of the radius
+  const shape = (theta) => {
+    return Math.cos(theta) * Math.sin(theta);
+  };
+
+  Array.from(Array(points).keys()).forEach((idx) => {
+    const theta = idx * 1;
+    const r = canvas.width * (1 / 4) * shape(theta);
     const randR = r + getRandomIntInclusive(0, r);
+    const x = cx + randR * Math.cos(4 * theta);
+    const y = cy + randR * Math.sin(4 * theta);
+    context.lineTo(x, y);
+  });
 
-    // Convert relative polar coordinates to cartesian
-    x = Math.cos(i) * randR + cx;
-    y = Math.sin(i) * randR + cy;
-    size = getRandomIntInclusive(100, 200);
+  context.strokeStyle = "white";
+  context.lineWidth = 4;
+  context.lineJoin = "round";
+  context.stroke();
+  context.fillStyle = "white";
+  context.fill();
+  context.closePath();
 
-    // draw points around the graph
-    circle(context, color, x, y, canvas.width / size);
-  }
+  context.beginPath();
+  Array.from(Array(points).keys()).forEach((idx) => {
+    const theta = idx * 0.01;
+    const r = canvas.width * (1 / 5) * shape(theta);
+    const randR = r + getRandomIntInclusive(0, r);
+    const x = cx + randR * Math.cos(theta);
+    const y = cy + randR * Math.sin(theta);
+    context.lineTo(x, y);
+  });
+
+  context.strokeStyle = color;
+  context.lineWidth = 4;
+  context.lineJoin = "round";
+  context.stroke();
+  context.fillStyle = color;
+  context.fill();
+  context.closePath();
 };
 
 export default Blobular;

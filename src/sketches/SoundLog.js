@@ -1,4 +1,4 @@
-const SoundLog = (context, canvas, a, b) => {
+const SoundLog = (context, canvas, a) => {
   // // Convert to relative polar co-ordinates
   const cx = canvas.width / 2; // c * x
   const cy = canvas.height / 2; // c * y;
@@ -8,7 +8,7 @@ const SoundLog = (context, canvas, a, b) => {
   context.beginPath();
 
   const shape = (theta) => {
-    return 1 - Math.cos(a * theta) * Math.sin(b * theta);
+    return 1 - Math.cos(theta) * Math.sin(a * theta);
   };
 
   Array.from(Array(points).keys()).forEach((idx) => {

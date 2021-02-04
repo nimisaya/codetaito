@@ -1,4 +1,5 @@
 import circle from "./Circle";
+// import triangle from "./Triangle";
 
 const DancingPoint = (context, canvas, color) => {
   const r = canvas.width / 4; // radius will be max 1/4(canvasWidth)
@@ -11,7 +12,7 @@ const DancingPoint = (context, canvas, color) => {
   context.beginPath();
 
   // Draw random points
-  for (let i = 0; i <= Math.PI * 2; i += 0.4) {
+  for (let i = 0; i <= Math.PI * 2; i += 0.1) {
     // Randomise distance between origin and points by changing the length of the radius
     const randR = r + getRandomIntInclusive(0, r);
 
@@ -21,6 +22,7 @@ const DancingPoint = (context, canvas, color) => {
 
     // draw points around the graph
     circle(context, color, x, y, canvas.width / 200);
+    // triangle(context, color, getRandomIntInclusive(0, x));
   }
 }; // DancingPoint
 
