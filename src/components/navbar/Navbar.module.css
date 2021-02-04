@@ -4,14 +4,17 @@ nav {
   height: 48px;
   width: 100%;
   box-shadow: 0px 4px 4px rgba(50, 50, 50, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar {
-  margin-left: 10vw;
-  margin-right: 10vw;
-  max-width: 960px;
+  /* margin-left: 10vw;
+  margin-right: 10vw; */
+  /* max-width: 960px; */
 
-  padding-left: 32px;
+  /* padding-left: 32px; */
 
   display: flex;
   flex-direction: row;
