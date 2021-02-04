@@ -9,7 +9,10 @@ const Home = () => {
       <ul>
         <li>
           <Link to="/art" className={styles.sketchlink}>
-            Zero
+            Get started
+          </Link>
+          <Link to="/art/mikedrop" className={styles.sketchlink}>
+            mikedrop
           </Link>
         </li>
       </ul>
