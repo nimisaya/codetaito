@@ -83,7 +83,7 @@ const ZeroAudio = () => {
           <br />
           <hr />
           <h2>Settings</h2>
-          <button onClick={startRec}>Mic</button>
+          {/* <button onClick={startRec}>Mic</button> */}
           <DimensionsDropdown />
           <p className={styles.dimensions}>
             <small>

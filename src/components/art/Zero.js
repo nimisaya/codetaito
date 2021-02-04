@@ -144,7 +144,8 @@ const graphics = (context, canvas, color, sketch) => {
         SoundLog(context, canvas, 2, 5);
         break;
       default:
-        spikeAudio(context, 300, 300, 200, color);
+        // spikeAudio(context, 300, 300, 200, color);
+        Wreath(context, canvas, color);
         break;
     }
   };

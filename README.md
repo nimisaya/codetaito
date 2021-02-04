@@ -6,7 +6,7 @@ Ever wanted a unique piece of abstract art? Or maybe your over people being able
 
 ## Learnt
 
-I created this to learn react and <canvas>. I've enjoyed learning things like:
+I created this to learn react and canvas. I've enjoyed learning things like:
 
 - Working with React Router
 - React hooks (useState, useEffect, useLayoutEffect, useRef) and custom hooks (useDropdown)
