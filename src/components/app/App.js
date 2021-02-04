@@ -8,6 +8,7 @@ import Zero from "../art/Zero";
 import ZeroAudio from "../art/ZeroAudio";
 // import Artboard from "../artboard/Artboard";
 import Navbar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 
 function App() {
   return (
@@ -21,11 +22,7 @@ function App() {
           <Route path="/mikedrop" component={ZeroAudio} />
         </Switch>
       </Router>
-      <footer>
-        <a href="https://github.com/nimisaya" target="_blank" rel="noreferrer">
-          <p>&copy; Amanda Jarvinen, 2021</p>
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }
