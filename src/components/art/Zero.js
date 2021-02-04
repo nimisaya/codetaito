@@ -4,6 +4,7 @@ import "react-colorful/dist/index.css";
 import { useRef, useLayoutEffect, useState } from "react";
 import useDropdown from "../../customHooks/useDropdown";
 import { HexColorPicker } from "react-colorful";
+import { setPixelDensity } from "./setPixelDensity";
 
 // Sketches
 import Circle from "../../sketches/Circle";
@@ -26,13 +27,7 @@ const Zero = () => {
   // const DIMENSIONS = ["Default", "Instagram", "Zoom"];
 
   // Select sketch from dropdown list
-  const SKETCHES = [
-    "Default",
-    "Wreath",
-    "Blobular",
-    "Dancing Points",
-    "Sound Log",
-  ];
+  const SKETCHES = ["Wreath", "Blobular", "Dancing Points", "Sound Log"];
 
   const [width, setWidth] = useState(DEFAULT_WIDTH);
   const [height, setHeight] = useState(DEFAULT_HEIGHT);
@@ -168,22 +163,6 @@ const getPixelRatio = (context) => {
 
   return (window.devicePixelRatio || 1) / backingStore;
 }; // getPixelRatio
-
-// Set pixel density of the canvas based on device pixel ratio to improve resolution on display
-const setPixelDensity = (context, canvas) => {
-  const ratio = getPixelRatio(context);
-  // Get the width and height based on the values set based on the values set in css
-  const width = getComputedStyle(canvas).getPropertyValue("width").slice(0, -2);
-  const height = getComputedStyle(canvas)
-    .getPropertyValue("height")
-    .slice(0, -2);
-  // Set the width and height of the canvas based on the ratio
-  canvas.width = width * ratio;
-  canvas.height = height * ratio;
-  //Update the css width and height
-  canvas.style.width = `${width}px`;
-  canvas.style.height = `${height}px`;
-}; // setPixelDensity
 
 const updateWidthHeight = (dimensions, setWidth, setHeight) => {
   switch (dimensions) {
