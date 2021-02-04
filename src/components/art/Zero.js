@@ -6,11 +6,13 @@ import useDropdown from "../../customHooks/useDropdown";
 import { HexColorPicker } from "react-colorful";
 
 // Sketches
-import circle from "../../sketches/Circle";
-import blobular from "../../sketches/Blobular";
-import dancingpoints from "../../sketches/DancingPoint";
-import wreath from "../../sketches/Wreath";
-import junkblob from "../../sketches/JunkBlob";
+import Circle from "../../sketches/Circle";
+import Blobular from "../../sketches/Blobular";
+import Dancingpoints from "../../sketches/DancingPoint";
+import Wreath from "../../sketches/Wreath";
+import Junkblob from "../../sketches/JunkBlob";
+import SoundLog from "../../sketches/SoundLog";
+import spikeAudio from "../../sketches/SpikeAudio";
 
 const DEFAULT_WIDTH = 600;
 const DEFAULT_HEIGHT = 600;
@@ -19,13 +21,18 @@ const DEFAULT_BKG_COLOR = "white";
 const Zero = () => {
   // Dimensions options displayed in dropdown list
   const DIMENSIONS = ["Default"];
+
+  // Excluding additional options until resizing and resolution addressed
   // const DIMENSIONS = ["Default", "Instagram", "Zoom"];
 
   // Select sketch from dropdown list
-  const SKETCHES = ["Wreath", "Blobular", "Dancing Points"];
-
-  // canvasRef.current holds the canvas DOM node.
-  const canvasRef = useRef();
+  const SKETCHES = [
+    "Default",
+    "Wreath",
+    "Blobular",
+    "Dancing Points",
+    "Sound Log",
+  ];
 
   const [width, setWidth] = useState(DEFAULT_WIDTH);
   const [height, setHeight] = useState(DEFAULT_HEIGHT);
@@ -41,6 +48,9 @@ const Zero = () => {
     SKETCHES[0],
     SKETCHES
   );
+
+  // canvasRef.current holds the reference to the canvas DOM node. You can access its id using canvasRef.current.id
+  const canvasRef = useRef();
 
   useLayoutEffect(() => {
     const canvas = canvasRef.current;
@@ -60,17 +70,16 @@ const Zero = () => {
     // If the canvas ratio changes then the context has to be scaled appropriately
     // context is what is actually appearing on the screen
     // context.scale(0.5, 0.5);
+
     // Set pixel density
     setPixelDensity(context, canvas);
 
+    // Set default background for canvas (avoid transparent to improve performance)
     context.fillStyle = DEFAULT_BKG_COLOR;
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw a circle --------------------
-    // const render = graphics(context, canvas, color);
     const render = graphics(context, canvas, color, sketch);
 
-    // render graphics
     render();
   }, [width, height, color, dimensions, sketch]); // useEffect
 
@@ -99,6 +108,7 @@ const Zero = () => {
           <SketchesDropdown />
           <DimensionsDropdown />
           <br />
+          {/* TODO: Only show colour picker when relevant to current sketch if isColorControlled = true */}
           <HexColorPicker color={color} onChange={setColor} />
           <p className={styles.dimensions}>
             <small>
@@ -121,17 +131,20 @@ const graphics = (context, canvas, color, sketch) => {
   return () => {
     switch (sketch) {
       case "Wreath":
-        wreath(context, canvas, color);
+        Wreath(context, canvas, color);
         break;
       case "Blobular":
-        // blobular(context, canvas, color);
-        junkblob(context, canvas, color);
+        // Blobular(context, canvas, color);
+        Junkblob(context, canvas, color);
         break;
       case "Dancing Points":
-        dancingpoints(context, canvas, color);
+        Dancingpoints(context, canvas, color);
+        break;
+      case "Sound Log":
+        SoundLog(context, canvas, 2, 5);
         break;
       default:
-        wreath(context, canvas, color);
+        spikeAudio(context, 300, 300, 200, color);
         break;
     }
   };

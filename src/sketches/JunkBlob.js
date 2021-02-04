@@ -44,8 +44,8 @@ const Junkblob = (context, canvas, color) => {
       y: y,
     };
     cpEnd = {
-      x: x + 60,
-      y: y - 100,
+      x: x,
+      y: y,
     };
 
     // cpStart = {
