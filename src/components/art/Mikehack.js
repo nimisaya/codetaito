@@ -112,7 +112,7 @@ const Mikehack = () => {
           // SoundLog = (context, canvas, val);
 
           console.log(amplitude);
-        }, 10);
+        }, 100);
       });
     }
     function handleError(error) {
