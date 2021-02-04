@@ -124,7 +124,8 @@ const graphics = (context, canvas, color, sketch) => {
         wreath(context, canvas, color);
         break;
       case "Blobular":
-        blobular(context, canvas, color);
+        // blobular(context, canvas, color);
+        junkblob(context, canvas, color);
         break;
       case "Dancing Points":
         dancingpoints(context, canvas, color);
@@ -133,18 +134,6 @@ const graphics = (context, canvas, color, sketch) => {
         wreath(context, canvas, color);
         break;
     }
-    // circle(
-    //   context,
-    //   color,
-    //   canvas.width / 2,
-    //   canvas.height / 2,
-    //   canvas.width / 4
-    // );
-    // wreath(context, canvas, color);
-    // blobular(context, canvas, color);
-    // junkblob(context, canvas, color);
-    // dancingpoints(context, canvas, color);
-    // polar(context, canvas, color);
   };
 };
 
