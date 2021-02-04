@@ -142,7 +142,9 @@ const Mikehack = () => {
           <h2>Recording</h2>
           <button onClick={startRec}>Start</button>
           <br />
-          <button onClick={stopRec}>Stop</button>
+          <button onClick={stopRec} disabled>
+            Stop
+          </button>
           <p className={styles.dimensions}>
             <small>600 x 600</small>
           </p>

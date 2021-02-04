@@ -19,8 +19,8 @@ function App() {
           <Route exact path="/mikedrop" component={Mikedrop} />
           <Route exact path="/mikehack" component={Mikehack} />
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }
