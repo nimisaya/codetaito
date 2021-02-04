@@ -14,7 +14,7 @@ const DancingPoint = (context, canvas, color) => {
   // Draw random points
   for (let i = 0; i <= Math.PI * 2; i += 0.1) {
     // Randomise distance between origin and points by changing the length of the radius
-    const randR = r + getRandomIntInclusive(0, r);
+    const randR = r + getRandomIntInclusive(-1000, r);
 
     // Convert relative polar coordinates to cartesian
     x = Math.cos(i) * randR + cx;
