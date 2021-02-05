@@ -12,17 +12,11 @@ I created this to learn react and canvas. I've enjoyed learning things like:
 - React hooks (useState, useEffect, useLayoutEffect, useRef) and custom hooks (useDropdown)
 - Had a lot of fun experimenting with canvas and seeing the impact of a state dependency on the canvas rendering
 
-### Screenshots
-
-
-
-
-
-
 ## Link
 
-https://nimisaya.github.io/codetaito/#/
-Note: The microphone once started will continue to run once you start it. This is a known issue. Suggest looking at the microphone sketch last and closing the tab when done with it.
+https://nimisaya.github.io/codetaito/
+
+_Note: The microphone once started will continue to run once you start it. This is a known issue. Suggest looking at the microphone sketch last and closing the tab when done with it._
 
 ## Tech
 
@@ -33,6 +27,24 @@ Note: The microphone once started will continue to run once you start it. This i
 - Select from multiple artworks
 - Personalise your art by selecting from a range of colours or speaking into a microphone.
 
+
+### Screenshots
+
+Make a unique image by changing the colour / position of the items on the canvas using the color picker
+
+<img src="https://raw.githubusercontent.com/nimisaya/codetaito/main/screenshots/codetaito_c.png" width="50%" alt="Wreath sketch">
+
+
+Save your image as png
+
+<img src="https://raw.githubusercontent.com/nimisaya/codetaito/main/screenshots/codetaito_saveImg.png" width="50%" alt="Save image">
+
+Voice controlled (amplitude)
+
+<img src="https://raw.githubusercontent.com/nimisaya/codetaito/main/screenshots/codetaito_mikehack.png" width="50%" alt="Voice controlled (amplitude)">
+
+
+
 ### Future features
 
 - Set resolution suitable for printing
@@ -41,6 +53,10 @@ Note: The microphone once started will continue to run once you start it. This i
 - Explore graphic libraries e.g. p5.js and three.js
 - Responsiveness
 - Sketches are on their own canvas (with their own link) instead of being rendered to the same canvas. Began this work but decided to play with the microphone instead.
+- Offset colours so control multiple colours on a sketch
+- Control impact of microphone input on the sketch by changing how the amplitude impacts the circle
+- MORE sketches exploring the canvas more, re-learning more math
+- Potentially seeing the math used to create a sketch in the UI
 
 ## Known bugs
 
