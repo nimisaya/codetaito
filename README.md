@@ -54,7 +54,7 @@ Voice controlled (amplitude)
 - Responsiveness
 - Sketches are on their own canvas (with their own link) instead of being rendered to the same canvas. Began this work but decided to play with the microphone instead.
 - Offset colours so control multiple colours on a sketch
-- Control impact of microphone input on the sketch by changing how the amplitude impacts the circle
+- UI Controls for the microphone that enable the user to alter how the amplitude impacts the circle. 
 - MORE sketches exploring the canvas more, re-learning more math
 - Potentially seeing the math used to create a sketch in the UI
 
