@@ -16,7 +16,7 @@ I created this to learn react and canvas. I've enjoyed learning things like:
 
 https://nimisaya.github.io/codetaito/
 
-_Note: The microphone once started will continue to run once you start it. This is a known issue. Suggest looking at the microphone sketch last and closing the tab when done with it._
+_Note: The microphone once started will continue to run. This is a known issue. Suggest looking at the microphone sketch last and closing the tab when done with it._
 
 ## Tech
 
