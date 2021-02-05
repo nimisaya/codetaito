@@ -93,3 +93,7 @@ label {
   font-size: small;
   font-weight: medium;
 }
+
+.stopBtn {
+  margin-top: 12px;
+}
