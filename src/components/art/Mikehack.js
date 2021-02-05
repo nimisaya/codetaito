@@ -85,7 +85,7 @@ const Mikehack = () => {
         callback(null);
       }
     } catch (e) {
-      // what to do on error?
+      console.warn(e);
     }
   };
   VolumeMeter.prototype.stop = function () {
@@ -140,10 +140,10 @@ const Mikehack = () => {
           <br />
           <hr />
           <h2>Recording</h2>
-          <button onClick={startRec}>Start</button>
-          <br />
-          <button onClick={stopRec} disabled>
-            Stop
+          <button onClick={startRec}>🔴 Start</button>
+
+          <button onClick={stopRec} disabled className={styles.stopBtn}>
+            ❌ Stop
           </button>
           <p className={styles.dimensions}>
             <small>600 x 600</small>
