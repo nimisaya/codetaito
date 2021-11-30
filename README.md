@@ -58,7 +58,7 @@ Voice controlled (amplitude)
 - MORE sketches exploring the canvas more, re-learning more math
 - Potentially seeing the math used to create a sketch in the UI
 
-## Known bugs
+## Known issues
 
 - Non-responsive
 - Needs DRYing
